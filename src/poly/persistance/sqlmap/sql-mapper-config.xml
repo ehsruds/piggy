@@ -5,5 +5,9 @@
     <typeAliases>
     	<!-- 사용할 DTO 등록  -->
 		<typeAlias type="poly.dto.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="poly.dto.UserInfoDTO" alias="UserInfoDTO"/>
+		<typeAlias type="poly.dto.MelonDTO" alias="MelonDTO"/>
+		<typeAlias type="poly.dto.MailDTO" alias="MailDTO"/>
+
     </typeAliases>
 </configuration>
