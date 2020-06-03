@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Hello World
+	강지연바보
 </body>
 </html>
