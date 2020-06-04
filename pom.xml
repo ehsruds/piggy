@@ -16,21 +16,21 @@
 	</properties>
 
 	<!-- 오라클에서 메이븐 저장소에 제공을 하고 있지 않기 때문에, 메이븐 사설 저장소 사용함 -->
-	<repositories>
+	<!-- <repositories>
 		<repository>
 			<id>oracle</id>
 			<name>ORACLE JDBC Repository</name>
 			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
-		</repository>
-	</repositories>
+		</repository> 
+	</repositories>  -->
 
 	<dependencies>
 
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.44</version>
-		</dependency>
+<dependency>
+         <groupId>mysql</groupId>
+         <artifactId>mysql-connector-java</artifactId>
+         <version>8.0.11</version>
+      </dependency>
 
 
 		<!-- 데이터 전송시, 문자 깨지는 현상을 방지하기 위한 BASE64 인코딩 사용할 라이브러리 추가 -->

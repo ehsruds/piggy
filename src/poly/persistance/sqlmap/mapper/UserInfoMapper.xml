@@ -22,18 +22,19 @@
 				#{password},
 				#{email},
 				#{user_id},
-				SYSDATE,
+				CURDATE(),
 				#{user_id},
-				SYSDATE
+				CURDATE()
 		)
 	</insert>
-
-	<!-- 이메일로 회원 가입 중복 방지하기 -->
+	
+		<!-- 이메일로 회원 가입 중복 방지하기 -->
 	<select id="getUserExists" parameterType="UserInfoDTO" resultType="UserInfoDTO">
 		SELECT DECODE(COUNT(1), 0, 'N', 'Y') AS EXISTS_YN 
 		  FROM USER_INFO
 		 WHERE EMAIL = #{email}
 	</select>
+
 	
 
 	<!-- 로그인을 위해 아이디와 비밀번호가 일치하는지 확인하기 -->

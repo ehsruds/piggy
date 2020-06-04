@@ -2,52 +2,43 @@ package poly.service.impl;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
-
-import poly.dto.MailDTO;
 import poly.dto.UserInfoDTO;
 import poly.persistance.mapper.UserInfoMapper;
-import poly.service.IMailService;
 import poly.service.IUserInfoService;
 import poly.util.CmmUtil;
-import poly.util.DateUtil;
-import poly.util.EncryptUtil;
 
 @Service("UserInfoService")
 public class UserInfoService implements IUserInfoService {
-
+	
+	private Logger log = Logger.getLogger(this.getClass());
+	
 	@Resource(name = "UserInfoMapper")
 	private UserInfoMapper userInfoMapper;
 
-	//메일 발송을 위한 MailService 자바 객체 가져오기
-	@Resource(name = "MailService")
-	private IMailService mailService;
+
 	
 	@Override
 	public int insertUserInfo(UserInfoDTO pDTO) throws Exception {
-
+		
+		log.info(this.getClass().getName() + ".insertUserInfo start!");
+		
 		// 회원가입 성공 : 1, 아이디 중복으로인한 가입 취소 : 2, 기타 에러 발생 : 0
 		int res = 0;
 
 		// controller에서 값이 정상적으로 못 넘어오는 경우를 대비하기 위해 사용함
 		if (pDTO == null) {
 			pDTO = new UserInfoDTO();
+			
+			
 		}
-
-		// 회원 가입 중복 방지를 위해 DB에서 데이터 조회
-		UserInfoDTO rDTO = userInfoMapper.getUserExists(pDTO);
-
-		// mapper에서 값이 정상적으로 못 넘어오는 경우를 대비하기 위해 사용함
-		if (rDTO == null) {
-			rDTO = new UserInfoDTO();
-		}
-
-		// 중복된 회원정보가 있는 경우, 결과값을 2로 변경하고, 더 이상 작업을 진행하지 않음
-		if (CmmUtil.nvl(rDTO.getExists_yn()).equals("Y")) {
-			res = 2;
-
-			// 회원가입이 중복이 아니므로, 회원가입 진행함
-		} else {
+			
+		
+			log.info("id : " + pDTO.getUser_id());
+			log.info("name : "+ pDTO.getUser_name());
+			log.info("password : " + pDTO.getPassword());
+			log.info("email : " + pDTO.getEmail());
 
 			// 회원가입
 			int success = userInfoMapper.insertUserInfo(pDTO);
@@ -56,37 +47,15 @@ public class UserInfoService implements IUserInfoService {
 			if (success > 0) {
 				res = 1;
 
-				/*
-				 * #######################################################
-				 *        				메일 발송 로직 추가 시작!!
-				 * #######################################################
-				 */
-				
-				MailDTO mDTO = new MailDTO();
-				
-				//회원정보화면에서 입력받은 이메일 변수(아직 암호화되어 넘어오기 때문에 복호화 수행함)
-				mDTO.setToMail(EncryptUtil.decAES128CBC(CmmUtil.nvl(pDTO.getEmail())));
-				
-				mDTO.setTitle("회원가입을 축하드립니다."); //제목
-
-				//메일 내용에 가입자 이름넣어서 내용 발송
-				mDTO.setContents(CmmUtil.nvl(pDTO.getUser_name()) +"님의 회원가입을 진심으로 축하드립니다."); 
-				
-				//회원 가입이 성공했기 때문에 메일을 발송함
-				mailService.doSendMail(mDTO);
-				
-				/*
-				 * #######################################################
-				 *        				메일 발송 로직 추가 끝!!
-				 * #######################################################
-				 */
+				log.info(this.getClass().getName() + ".register okay!");
 				
 			} else {
 				res = 0;
-
+				log.info(this.getClass().getName() + ".insertUserInfo false!");
 			}
 
-		}
+			log.info(this.getClass().getName() + ".insertUserInfo end!");
+
 
 		return res;
 	}
@@ -127,31 +96,6 @@ public class UserInfoService implements IUserInfoService {
 		if (CmmUtil.nvl(rDTO.getUser_id()).length()>0) {
 			res = 1;
 			
-			/*
-			 * #######################################################
-			 *        				메일 발송 로직 추가 시작!!
-			 * #######################################################
-			 */
-			
-			MailDTO mDTO = new MailDTO();
-			
-			//아이디, 패스워드 일치하는지 체크하는 쿼리에서 이메일 값 받아오기(아직 암호화되어 넘어오기 때문에 복호화 수행함)
-			mDTO.setToMail(EncryptUtil.decAES128CBC(CmmUtil.nvl(rDTO.getEmail())));
-			
-			mDTO.setTitle("로그인 알림!"); //제목
-
-			//메일 내용에 가입자 이름넣어서 내용 발송
-			mDTO.setContents(DateUtil.getDateTime("yyyy.MM.dd 24h:mm:ss") +"에 "+ CmmUtil.nvl(rDTO.getUser_name()) +"님이 로그인하였습니다."); 
-			
-			//회원 가입이 성공했기 때문에 메일을 발송함
-			mailService.doSendMail(mDTO);
-			
-			/*
-			 * #######################################################
-			 *        				메일 발송 로직 추가 끝!!
-			 * #######################################################
-			 */
-			
 			
 		}
 
@@ -163,5 +107,6 @@ public class UserInfoService implements IUserInfoService {
 		
 		return res;
 	}
+
 
 }

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="poly.util.CmmUtil" %>
 <%@ page import="poly.dto.UserInfoDTO" %>
 <%
@@ -18,13 +18,13 @@ if (pDTO==null){
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>메시지.</title>
 <script type="text/javascript">
 	alert("<%=msg%>");
 </script>
 </head>
 <body>
-<%=CmmUtil.nvl(pDTO.getUser_name()) %> 만들었어요.
+<%=CmmUtil.nvl(pDTO.getUser_name()+ "만들었습니다")%>
 </body>
 </html>

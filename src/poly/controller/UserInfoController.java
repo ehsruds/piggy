@@ -69,6 +69,7 @@ public class UserInfoController {
 			String user_name = CmmUtil.nvl(request.getParameter("user_name")); //이름
 			String password = CmmUtil.nvl(request.getParameter("password")); //비밀번호
 			String email = CmmUtil.nvl(request.getParameter("email")); //이메일
+
 			/*
 			 * #######################################################
 			 *        웹(회원정보 입력화면)에서 받는 정보를 String 변수에 저장 끝!!
@@ -86,7 +87,8 @@ public class UserInfoController {
 			log.info("user_id : "+ user_id);
 			log.info("user_name : "+ user_name);
 			log.info("password : "+ password);
-			log.info("email : "+ email);	
+			log.info("email : "+ email);
+		
 			
 			
 			/*
@@ -109,6 +111,7 @@ public class UserInfoController {
 			
 			//민감 정보인 이메일은 AES128-CBC로 암호화함
 			pDTO.setEmail(EncryptUtil.encAES128CBC(email));
+
 			
 			/*
 			 * #######################################################
@@ -158,7 +161,7 @@ public class UserInfoController {
 			
 		}
 		
-		return "/user/Msg";
+		return "/user/msg";
 	}	
 	
 	

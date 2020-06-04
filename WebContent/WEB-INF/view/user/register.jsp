@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html lang="UTF-8">
 
 <head>
 
@@ -29,6 +29,12 @@
 			return false;
 		}
 		
+		if (f.email.value==""){
+			alert("이메일을 입력해주세요.");
+			f.email.focus();
+			return false;
+		}
+		
 		if (f.password.value==""){
 			alert("비밀번호를 입력해주세요.");
 			f.password.focus();
@@ -41,11 +47,7 @@
 			return false;
 		}
 		
-		if (f.email.value==""){
-			alert("이메일을 입력해주세요.");
-			f.email.focus();
-			return false;
-		}
+
 
 	}
 </script>
