@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	강지연바보
+	강지연바보2
 </body>
 </html>
