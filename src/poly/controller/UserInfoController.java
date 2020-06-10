@@ -40,6 +40,20 @@ public class UserInfoController {
 		return "/user/register";
 	}
 	
+	@RequestMapping(value="user/index")
+	public String index() {
+		log.info(this.getClass().getName() + ".user/index ok!");
+		
+		return "/user/index";
+	}
+	
+	@RequestMapping(value="user/login")
+	public String login() {
+		log.info(this.getClass().getName() + ".user/login ok!");
+		
+		return "/user/login";
+	}
+	
 	
 	/**
 	 * 회원가입 로직 처리
@@ -159,9 +173,11 @@ public class UserInfoController {
 			//변수 초기화(메모리 효율화 시키기 위해 사용함)
 			pDTO = null;
 			
+			log.info(this.getClass().getName() + ".msg end!");
+			
 		}
 		
-		return "/user/msg";
+		return "/user/index";
 	}	
 	
 	
@@ -294,7 +310,7 @@ public class UserInfoController {
 			
 		}
 		
-		return "/user/LoginResult";
+		return "/user/index";
 	}	
 			
 }

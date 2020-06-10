@@ -101,10 +101,10 @@
               </form>
               <hr>
               <div class="text-center">
-                <a class="small" href="forgot-password.html">아이디 &amp; 비밀번호찾기</a>
+                <a class="small" href="/user/forgot-password">아이디 &amp; 비밀번호찾기</a>
               </div>
               <div class="text-center">
-                <a class="small" href="login.html">이미 계정을 가지고있으신가요? 로그인!!</a>
+                <a class="small" href="/user/login">이미 계정을 가지고있으신가요? 로그인!!</a>
               </div>
             </div>
           </div>
@@ -115,14 +115,14 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="/js/sb-admin-2.min.js"></script>
 
 </body>
 

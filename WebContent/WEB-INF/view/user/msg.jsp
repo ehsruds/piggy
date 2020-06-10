@@ -21,7 +21,7 @@ if (pDTO==null){
 <meta charset="UTF-8">
 <title>메시지.</title>
 <script type="text/javascript">
-	alert("<%=msg%>");
+	window.alert("<%=msg%>");
 </script>
 </head>
 <body>

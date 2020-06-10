@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/view/forgot-password.jsp=UTF-8
-encoding//WebContent/WEB-INF/view/index.jsp=UTF-8
+encoding//WebContent/WEB-INF/view/user/index.jsp=UTF-8
 encoding//WebContent/WEB-INF/view/user/login.jsp=UTF-8
 encoding//WebContent/WEB-INF/view/user/msg.jsp=UTF-8
 encoding//WebContent/WEB-INF/view/user/register.jsp=UTF-8
