@@ -1,9 +1,5 @@
 package poly.dto;
 
-/**
- * @author 이협건
- * @version 1.1 공지사항 DTO
- */
 public class NoticeDTO {
 
 	private String notice_seq; // 기본키, 순번
