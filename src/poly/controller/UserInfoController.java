@@ -47,6 +47,13 @@ public class UserInfoController {
 		return "/user/index";
 	}
 	
+	@RequestMapping(value="/user/index2")
+	public String index2() {
+		log.info(this.getClass().getName() + "/index2 ok!");
+		
+		return "/user/index2";
+	}
+	
 	@RequestMapping(value="user/login")
 	public String login() {
 		log.info(this.getClass().getName() + ".user/login ok!");

@@ -115,15 +115,6 @@ function calBytes(str){
 			</td>
 		</tr>
 		<tr>
-			<td align="center">공지글 여부</td>
-			<td>
-				예<input type="radio" name="noticeYn" value="1"
-						<%=CmmUtil.checked(CmmUtil.nvl(rDTO.getNotice_yn()), "1") %>	/>
-			        아니오<input type="radio" name="noticeYn" value="2" 
-			        	<%=CmmUtil.checked(CmmUtil.nvl(rDTO.getNotice_yn()), "2") %>	/>
-			</td>
-		</tr>
-		<tr>
 			<td colspan="2">
 				<textarea 
 						name="contents" style="width: 550px; height: 400px"

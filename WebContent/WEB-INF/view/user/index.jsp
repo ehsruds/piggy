@@ -5,10 +5,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page import="poly.util.CmmUtil" %>
+<%@ page import="poly.dto.UserInfoDTO" %>
 <%
 String SS_USER_ID = CmmUtil.nvl((String)session.getAttribute("SS_USER_ID"));
 
 String res = CmmUtil.nvl((String)request.getAttribute("res"));
+
+UserInfoDTO pDTO = (UserInfoDTO)request.getAttribute("pDTO");
 
 %>   
  
@@ -189,17 +192,19 @@ String res = CmmUtil.nvl((String)request.getAttribute("res"));
 
 
             <div class="topbar-divider d-none d-sm-block"></div>
-
+	<c:set var="user_id" value="SS_USER_ID" />
+	
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                </span>
                 <i class="fas fa-user-astronaut"></i>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
-		<c:set var="user_id" value="SS_USER_ID" />
+	
 
 		<c:choose>
 			<c:when test="${user_id == null }">

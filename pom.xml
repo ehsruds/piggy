@@ -33,6 +33,24 @@
     <version>1.2</version>
 </dependency>
 	
+	<!-- https://mvnrepository.com/artifact/com.sun.xml.security/xml-security-impl -->
+<dependency>
+    <groupId>com.sun.xml.security</groupId>
+    <artifactId>xml-security-impl</artifactId>
+    <version>1.0</version>
+</dependency>
+	
+	<dependency>
+
+<groupId>javax.servlet</groupId>
+
+<artifactId>jstl</artifactId>
+
+<version>1.2</version>
+
+</dependency>
+
+
 	<dependency>
 	<groupId>com.github.jbytecode</groupId>
 	<artifactId>RCaller</artifactId>

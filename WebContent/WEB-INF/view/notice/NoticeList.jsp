@@ -1,16 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="poly.util.CmmUtil" %>
 <%@ page import="poly.dto.NoticeDTO" %>
 <%@ page import="java.util.List"%>   
 <%@ page import="java.util.ArrayList"%> 
 <%@ page import="java.util.HashMap"%>    
 <%
-session.setAttribute("SESSION_USER_ID", "USER01"); //¼¼¼Ç °­Á¦ Àû¿ë, ·Î±×ÀÎµÈ »óÅÂ·Î º¸¿©ÁÖ±â À§ÇÔ
+session.setAttribute("SESSION_USER_ID", "USER01"); //ì„¸ì…˜ ê°•ì œ ì ìš©, ë¡œê·¸ì¸ëœ ìƒíƒœë¡œ ë³´ì—¬ì£¼ê¸° ìœ„í•¨
 
-List<NoticeDTO> rList =	(List<NoticeDTO>)request.getAttribute("rList");
 
-//°Ô½ÃÆÇ Á¶È¸ °á°ú º¸¿©ÁÖ±â
+List<NoticeDTO> rList =	(List<NoticeDTO>) request.getAttribute("rList");
+
+
+//ê²Œì‹œíŒ ì¡°íšŒ ê²°ê³¼ ë³´ì—¬ì£¼ê¸°
 if (rList==null){
 	rList = new ArrayList<NoticeDTO>();
 	
@@ -20,11 +22,11 @@ if (rList==null){
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°øÁö ¸®½ºÆ®</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ê³µì§€ ë¦¬ìŠ¤íŠ¸</title>
 <script type="text/javascript">
 
-//»ó¼¼º¸±â ÀÌµ¿
+//ìƒì„¸ë³´ê¸° ì´ë™
 function doDetail(seq){
 	location.href="/notice/NoticeInfo.do?nSeq="+ seq;
 }
@@ -32,17 +34,17 @@ function doDetail(seq){
 </script>	
 </head>
 <body>
-<h2>°øÁö»çÇ×</h2>
+<h2>ê³µì§€ì‚¬í•­</h2>
 <hr/>
 <br/>
 
 <table border="1" width="600px">
 <tr>
-	<td width="100" align="center">¼ø¹ø</td>
-	<td width="200" align="center">Á¦¸ñ</td>
-	<td width="100" align="center">Á¶È¸¼ö</td>
-	<td width="100" align="center">µî·ÏÀÚ</td>
-	<td width="100" align="center">µî·ÏÀÏ</td>
+	<td width="100" align="center">ìˆœë²ˆ</td>
+	<td width="200" align="center">ì œëª©</td>
+	<td width="100" align="center">ì¡°íšŒìˆ˜</td>
+	<td width="100" align="center">ë“±ë¡ì</td>
+	<td width="100" align="center">ë“±ë¡ì¼</td>
 </tr>
 <%
 for (int i=0;i<rList.size();i++){
@@ -56,15 +58,9 @@ for (int i=0;i<rList.size();i++){
 <tr>
 	<td align="center">
 	<%
-	//°øÁö±ÛÀÌ¶ó¸é, [°øÁö]Ç¥½Ã 
-	if (CmmUtil.nvl(rDTO.getNotice_yn()).equals("1")){
-		out.print("<b>[°øÁö]</b>");
-		
-	//°øÁö±ÛÀÌ ¾Æ´Ï¶ó¸é, ±Û¹øÈ£ º¸¿©ÁÖ±â 		
-	}else{
+
 		out.print(CmmUtil.nvl(rDTO.getNotice_seq()));
-			
-	}
+	
 	%></td>
 	<td align="center">
 		<a href="javascript:doDetail('<%=CmmUtil.nvl(rDTO.getNotice_seq())%>');">
@@ -78,6 +74,6 @@ for (int i=0;i<rList.size();i++){
 }
 %>
 </table>
-<a href="/notice/NoticeReg.do">[±Û¾²±â]</a>
+<a href="/notice/NoticeReg.do">[ê¸€ì“°ê¸°]</a>
 </body>
 </html>

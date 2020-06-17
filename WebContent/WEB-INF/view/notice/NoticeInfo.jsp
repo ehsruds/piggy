@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="poly.util.CmmUtil" %>
 <%@ page import="poly.dto.NoticeDTO" %>
 <%
 NoticeDTO rDTO = (NoticeDTO)request.getAttribute("rDTO");
 
-//°øÁö±Û Á¤º¸¸¦ ¸øºÒ·¯¿Ô´Ù¸é, °´Ã¼ »ý¼º
+//ê³µì§€ê¸€ ì •ë³´ë¥¼ ëª»ë¶ˆëŸ¬ì™”ë‹¤ë©´, ê°ì²´ ìƒì„±
 if (rDTO==null){
 	rDTO = new NoticeDTO();
 
@@ -13,14 +13,14 @@ if (rDTO==null){
 
 String ss_user_id = CmmUtil.nvl((String)session.getAttribute("SESSION_USER_ID"));
 
-//º»ÀÎÀÌ ÀÛ¼ºÇÑ ±Û¸¸ ¼öÁ¤ °¡´ÉÇÏµµ·Ï ÇÏ±â(1:ÀÛ¼ºÀÚ ¾Æ´Ô / 2: º»ÀÎÀÌ ÀÛ¼ºÇÑ ±Û / 3: ·Î±×ÀÎ¾ÈÇÔ)
+//ë³¸ì¸ì´ ìž‘ì„±í•œ ê¸€ë§Œ ìˆ˜ì • ê°€ëŠ¥í•˜ë„ë¡ í•˜ê¸°(1:ìž‘ì„±ìž ì•„ë‹˜ / 2: ë³¸ì¸ì´ ìž‘ì„±í•œ ê¸€ / 3: ë¡œê·¸ì¸ì•ˆí•¨)
 int edit = 1;
 
-//·Î±×ÀÎ ¾ÈÇß´Ù¸é....
+//ë¡œê·¸ì¸ ì•ˆí–ˆë‹¤ë©´....
 if (ss_user_id.equals("")){
 	edit = 3;
 	
-//º»ÀÎÀÌ ÀÛ¼ºÇÑ ±ÛÀÌ¸é 2°¡ µÇµµ·Ï º¯°æ
+//ë³¸ì¸ì´ ìž‘ì„±í•œ ê¸€ì´ë©´ 2ê°€ ë˜ë„ë¡ ë³€ê²½
 }else if (ss_user_id.equals(CmmUtil.nvl(rDTO.getUser_id()))){
 	edit = 2;
 	
@@ -34,41 +34,41 @@ System.out.println("ss_user_id : "+ss_user_id);
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>°Ô½ÃÆÇ ±Ûº¸±â</title>
+<title>ê²Œì‹œíŒ ê¸€ë³´ê¸°</title>
 <script type="text/javascript">
 
-//¼öÁ¤ÇÏ±â
+//ìˆ˜ì •í•˜ê¸°
 function doEdit(){
 	if ("<%=edit%>"==2){
 		location.href="/notice/NoticeEditInfo.do?nSeq=<%=CmmUtil.nvl(rDTO.getNotice_seq())%>";
 		
 	}else if ("<%=edit%>"==3){
-		alert("·Î±×ÀÎ ÇÏ½Ã±æ ¹Ù¶ø´Ï´Ù.");
+		alert("ë¡œê·¸ì¸ í•˜ì‹œê¸¸ ë°”ëžë‹ˆë‹¤.");
 		
 	}else {
-		alert("º»ÀÎÀÌ ÀÛ¼ºÇÑ ±Û¸¸ ¼öÁ¤ °¡´ÉÇÕ´Ï´Ù.");
+		alert("ë³¸ì¸ì´ ìž‘ì„±í•œ ê¸€ë§Œ ìˆ˜ì • ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 		
 	}
 }
 
 
-//»èÁ¦ÇÏ±â
+//ì‚­ì œí•˜ê¸°
 function doDelete(){
 	if ("<%=edit%>"==2){
-		if(confirm("ÀÛ¼ºÇÑ ±ÛÀ» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?")){
+		if(confirm("ìž‘ì„±í•œ ê¸€ì„ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?")){
 			location.href="/notice/NoticeDelete.do?nSeq=<%=CmmUtil.nvl(rDTO.getNotice_seq())%>";
 			
 		}
 		
 	}else if ("<%=edit%>"==3){
-		alert("·Î±×ÀÎ ÇÏ½Ã±æ ¹Ù¶ø´Ï´Ù.");
+		alert("ë¡œê·¸ì¸ í•˜ì‹œê¸¸ ë°”ëžë‹ˆë‹¤.");
 		
 	}else {
-		alert("º»ÀÎÀÌ ÀÛ¼ºÇÑ ±Û¸¸ »èÁ¦ °¡´ÉÇÕ´Ï´Ù.");
+		alert("ë³¸ì¸ì´ ìž‘ì„±í•œ ê¸€ë§Œ ì‚­ì œ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 		
 	}
 }
-//¸ñ·ÏÀ¸·Î ÀÌµ¿
+//ëª©ë¡ìœ¼ë¡œ ì´ë™
 function doList(){
 	location.href="/notice/NoticeList.do";
 		
@@ -83,21 +83,14 @@ function doList(){
 	<col width="100px" />
 	<col width="200px" />
 	<tr>
-		<td align="center">Á¦¸ñ</td>
+		<td align="center">ì œëª©</td>
 		<td colspan="3"><%=CmmUtil.nvl(rDTO.getTitle())%></td>
 	</tr>
+
 	<tr>
-		<td align="center">°øÁö±Û ¿©ºÎ</td>
-		<td colspan="3">¿¹<input type="radio" name="noticeYn" value="1" 
-				<%=CmmUtil.checked(CmmUtil.nvl(rDTO.getNotice_yn()), "1") %>/>
-		        ¾Æ´Ï¿À<input type="radio" name="noticeYn" value="2" 
-		        <%=CmmUtil.checked(CmmUtil.nvl(rDTO.getNotice_yn()), "2") %>/>
-		</td>
-	</tr>
-	<tr>
-		<td align="center">ÀÛ¼ºÀÏ</td>
+		<td align="center">ìž‘ì„±ì¼</td>
 		<td><%=CmmUtil.nvl(rDTO.getReg_dt())%></td>
-		<td align="center">Á¶È¸¼ö</td>
+		<td align="center">ì¡°íšŒìˆ˜</td>
 		<td><%=CmmUtil.nvl(rDTO.getRead_cnt())%></td>
 	</tr>	
 	<tr>
@@ -107,9 +100,9 @@ function doList(){
 	</tr>
 <tr>
 	<td align="center" colspan="4">
-		<a href="javascript:doEdit();">[¼öÁ¤]</a>
-		<a href="javascript:doDelete();">[»èÁ¦]</a>
-		<a href="javascript:doList();">[¸ñ·Ï]</a>
+		<a href="javascript:doEdit();">[ìˆ˜ì •]</a>
+		<a href="javascript:doDelete();">[ì‚­ì œ]</a>
+		<a href="javascript:doList();">[ëª©ë¡]</a>
 	</td>
 </tr>		
 </table>

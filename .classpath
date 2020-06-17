@@ -20,5 +20,6 @@
 	<classpathentry kind="lib" path="C:/JRI.jar"/>
 	<classpathentry kind="lib" path="C:/JRIEngine.jar"/>
 	<classpathentry kind="lib" path="C:/REngine.jar"/>
+	<classpathentry kind="lib" path="C:/RserveEngine.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

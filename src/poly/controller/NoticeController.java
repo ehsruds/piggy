@@ -38,13 +38,6 @@ public class NoticeController {
 	 * method => 기입안하면 GET, POST 모두 가능하나, 가급적 적어주는 것이 좋다.
 	 * */
 	
-	@RequestMapping(value="index")
-	public String Index() {
-		log.info(this.getClass());
-		
-		return "/index";
-	}
-	
 	/**
 	 * 게시판 리스트 보여주기
 	 * */
@@ -112,7 +105,6 @@ public class NoticeController {
 			 * */
 			String user_id = CmmUtil.nvl((String)session.getAttribute("SESSION_USER_ID")); //아이디
 			String title = CmmUtil.nvl(request.getParameter("title")); //제목
-			String noticeYn = CmmUtil.nvl(request.getParameter("noticeYn")); //공지글 여부
 			String contents = CmmUtil.nvl(request.getParameter("contents")); //내용
 	
 			/*
@@ -123,14 +115,12 @@ public class NoticeController {
 			 * */
 			log.info("user_id : "+ user_id);
 			log.info("title : "+ title);
-			log.info("noticeYn : "+ noticeYn);
 			log.info("contents : "+ contents);		
 			
 			NoticeDTO pDTO = new NoticeDTO();
 			
 			pDTO.setUser_id(user_id);
 			pDTO.setTitle(title);
-			pDTO.setNotice_yn(noticeYn);;
 			pDTO.setContents(contents);
 	
 			
@@ -288,13 +278,11 @@ public class NoticeController {
 			String user_id = CmmUtil.nvl((String)session.getAttribute("SESSION_USER_ID")); //아이디
 			String nSeq = CmmUtil.nvl(request.getParameter("nSeq")); //글번호(PK)
 			String title = CmmUtil.nvl(request.getParameter("title")); //제목
-			String noticeYn = CmmUtil.nvl(request.getParameter("noticeYn")); //공지글 여부
 			String contents = CmmUtil.nvl(request.getParameter("contents")); //내용
 	
 			log.info("user_id : "+ user_id);
 			log.info("nSeq : "+ nSeq);
 			log.info("title : "+ title);
-			log.info("noticeYn : "+ noticeYn);
 			log.info("contents : "+ contents);		
 			
 			NoticeDTO pDTO = new NoticeDTO();
@@ -302,7 +290,6 @@ public class NoticeController {
 			pDTO.setUser_id(user_id);
 			pDTO.setNotice_seq(nSeq);;
 			pDTO.setTitle(title);
-			pDTO.setNotice_yn(noticeYn);;
 			pDTO.setContents(contents);
 	
 			//게시글 수정하기 DB

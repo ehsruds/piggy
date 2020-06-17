@@ -4,7 +4,6 @@ public class NoticeDTO {
 
 	private String notice_seq; // 기본키, 순번
 	private String title; // 제목
-	private String notice_yn; // 공지글 여부
 	private String contents; // 글 내용
 	private String user_id; // 작성자
 	private String read_cnt; // 조회수
@@ -37,14 +36,6 @@ public class NoticeDTO {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getNotice_yn() {
-		return notice_yn;
-	}
-
-	public void setNotice_yn(String notice_yn) {
-		this.notice_yn = notice_yn;
 	}
 
 	public String getContents() {
