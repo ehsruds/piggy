@@ -21,5 +21,8 @@
 	<classpathentry kind="lib" path="C:/JRIEngine.jar"/>
 	<classpathentry kind="lib" path="C:/REngine.jar"/>
 	<classpathentry kind="lib" path="C:/RserveEngine.jar"/>
+	<classpathentry kind="lib" path="C:/Users/data-21/Desktop/빅데이터수집실습/jsoup 코드 및 참고자료/jsoup-1.13.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/data-21/Desktop/빅데이터수집실습/tools-1.8.0.jar/tools-1.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/data-21/Desktop/빅데이터수집실습/commons-codec-1.14/commons-codec-1.14.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
